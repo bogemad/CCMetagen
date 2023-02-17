@@ -7,12 +7,12 @@ Script to add taxids to nt collection
 Created on Fri Dec 28 10:37:56 2018
 """
 
-import re
+import re, sys
 
 
 # input files:
 acc2taxid_map="accession_taxid_nucl.map"
-nt_in="nt.fa"
+nt_in=sys.argv[1]
 
 
 # function to  get taxids from accession numbers
@@ -31,7 +31,7 @@ with open(acc2taxid_map) as a:
 # read fasta file and output new file on the fly
 # although it says 'open', it reads line by line and won't store the whole file in memory.
     
-new_nt = open('nt_w_taxid.fas', 'w')
+new_nt = open(sys.argv[2], 'w')
 
 with open(nt_in) as nt:
     for line in nt:
